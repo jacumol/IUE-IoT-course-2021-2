@@ -1,0 +1,26 @@
+version: "3.5"
+services:
+  iot-emq:
+    container_name: "IoTEMQ"
+    image: emqx/emqx:4.2.3
+    expose:
+      - "18083"
+      - "18084"
+      - "1883"
+      - "1884"
+      - "8084"
+    volumes:
+      - "/opt/emqtth/etc"
+      - "/opt/emqttd/log"
+    env_file:
+      - envs/global.env
+      - envs/dev_emq.env
+    ports:
+      - "18083:18083" # Dashboard administration
+      - "1883:1883" # port tcp
+      - "8083:8083" # port websocket
+      - "8084:8084" # port websocket encriptado (wss)
+
+    
+
+    
